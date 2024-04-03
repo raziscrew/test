@@ -5,7 +5,7 @@ npm install
 ```
 
 ## Start the project
-
+go to 
 ```
 npm start
 ```
