@@ -72,3 +72,24 @@ test('Check prices', async ({ page }) => {
     await newPage.waitForLoadState();
     expect(newPage.url()).toBe('http://localhost:3000/');
   });
+  
+  test('Button add to cart exist', async ({ page }) => {
+    await page.goto('localhost:3000/cart');
+  
+     const Target = 'Your cart is currently empty';
+  
+     const title = await page.getByText(Target);
+     await expect(title).toBeTruthy();
+  });
+  
+  test('link redirects to the home page', async ({ page }) => {
+    await page.goto('localhost:3000/cart'); 
+  
+    await Promise.all([
+      // Click the link by button text
+      page.click('text=back to shopping') 
+    ]);
+  
+    // Check if the current URL is the home page
+    await expect(page).toHaveURL('http://localhost:3000/'); // Replace with your home page URL
+  });
